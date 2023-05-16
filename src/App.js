@@ -9,45 +9,50 @@ function App() {
   const part3 = 'State of a component'
   const exercises3 = 14
 
+  const parts = [part1, part2, part3]
+  const exes = [exercises1, exercises2, exercises3]
+
   return (
     <>
       <Header courseName={course} />
       <Content
-        part1={part1}
-        exercises1={exercises1}
-        part2={part2}
-        exercises2={exercises2}
-        part3={part3}
-        exercises3={exercises3}
+        parts={parts}
+        exes={exes}
+        // part1={part1}
+        // part2={part2}
+        // part3={part3}
+        // exercises1={exercises1}
+        // exercises2={exercises2}
+        // exercises3={exercises3}
       />
-      <Total exercisesTotal={exercises1+exercises2+exercises3}/>
+      <Total exercisesTotal={exercises1 + exercises2 + exercises3} />
     </>
   )
 }
 
 const Header = (props) => {
-  return <h1>{props.course}</h1>
+  return <h1>{props.courseName}</h1>
 }
 
 const Content = (props) => {
   return (
     <>
-      <p>
-        {props.part1} {props.exercises1}
-      </p>
-      <p>
-        {props.part2} {props.exercises2}
-      </p>
-      <p>
-        {props.part3} {props.exercises3}
-      </p>
+      <Part title={props.parts[0]} exercises={props.exes[0]} />
+      <Part title={props.parts[1]} exercises={props.exes[1]} />
+      <Part title={props.parts[2]} exercises={props.exes[2]} />
     </>
   )
 }
 
 const Total = (props) => {
+  return <p>Number of exercises {props.exercisesTotal}</p>
+}
+
+const Part = (props) => {
   return (
-    <p>Number of exercises {props.exercisesTotal}</p>
+    <p>
+      {props.title} {props.exercises}
+    </p>
   )
 }
 
